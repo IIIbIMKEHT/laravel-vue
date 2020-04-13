@@ -54,7 +54,6 @@ class User extends Authenticatable
             if(file_exists($userPhoto)){
                 @unlink($userPhoto);
             }
-
         }
 
         if(!empty($request->password)){

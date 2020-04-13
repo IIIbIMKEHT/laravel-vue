@@ -16,10 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::apiResources([
+        'user' => 'API\UserController',
+        'category' => 'API\CategoryController',
+        'product' => 'API\ProductController'
+    ]);
+});
 
-Route::apiResources([
-    'user' => 'API\UserController'
-]);
 Route::get('profile', 'API\UserController@profile');
 Route::get('findUser', 'API\UserController@search');
+Route::get('findCategory', 'API\CategoryController@search');
 Route::put('profile', 'API\UserController@updateProfile');

@@ -41,13 +41,7 @@ Vue.use(VueProgressBar, {
 import Gate from './Gate';
 Vue.prototype.$gate = new Gate(window.user);
 
-let routes = [
-    { path: '/dashboard', component: require('./components/Dashboard.vue').default },
-    { path: '/developer', component: require('./components/Developer.vue').default },
-    { path: '/users', component: require('./components/Users.vue').default },
-    { path: '/profile', component: require('./components/Profile.vue').default },
-    { path: '*', component: require('./components/NotFound.vue').default },
-]
+import routes from './routes'
 
 Vue.filter('upText', function(text){
     return text.charAt(0).toUpperCase() + text.slice(1)
